@@ -505,7 +505,6 @@ enum quantum_keycodes {
 #define SQ_S(n) (n < SEQUENCER_STEPS ? SEQUENCER_STEP_MIN + n : KC_NO)
 #define SQ_R(n) (n < SEQUENCER_RESOLUTIONS ? SEQUENCER_RESOLUTION_MIN + n : KC_NO)
 #define SQ_T(n) (n < SEQUENCER_TRACKS ? SEQUENCER_TRACK_MIN + n : KC_NO)
-<<<<<<< HEAD
 
     // One Shot
     ONESHOT_ENABLE,
@@ -517,17 +516,7 @@ enum quantum_keycodes {
 
     // Start of custom keycode range for keyboards and keymaps - always leave at the end
 
-
-    // One Shot
-    ONESHOT_ENABLE,
-    ONESHOT_DISABLE,
-    ONESHOT_TOGGLE,
-
     // always leave at the end
-
-
-    // RGB underglow/matrix (continued)
-    RGB_MODE_TWINKLE,
 
     // Key Overrides
     KEY_OVERRIDE_TOGGLE,

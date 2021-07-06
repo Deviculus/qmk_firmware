@@ -24,18 +24,11 @@
 #    include "rgblight.h"
 #endif
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 #ifdef LED_MATRIX_ENABLE
 #    include "led_matrix.h"
 #endif
-=======
->>>>>>> mod-tap-combos
-=======
-#ifdef LED_MATRIX_ENABLE
-#    include "led_matrix.h"
-#endif
->>>>>>> local-key-overrides
+
 #ifdef RGB_MATRIX_ENABLE
 #    include "rgb_matrix.h"
 #endif
@@ -69,18 +62,10 @@ void suspend_power_down(void) {
     backlight_set(0);
 #endif
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #ifdef LED_MATRIX_ENABLE
     led_matrix_task();
 #endif
-=======
->>>>>>> mod-tap-combos
-=======
-#ifdef LED_MATRIX_ENABLE
-    led_matrix_task();
-#endif
->>>>>>> local-key-overrides
+
 #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_task();
 #endif
