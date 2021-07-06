@@ -1,0 +1,31 @@
+//   name     		result    		chord keys 
+COMB(WF_AT,  		KC_AT,  		KC_W, 		KC_F)
+COMB(RS_LPRN,  		KC_LPRN,   		HOME_R, 	HOME_S)
+COMB(XC_UNDS,  		KC_UNDS,    	KC_X, 		KC_C)
+
+COMB(FP_DLR, 		KC_DLR, 		KC_F, 		KC_P)
+COMB(ST_LBRC, 		KC_LBRC,    	HOME_S, 	HOME_T)
+COMB(CD_UNDS,     	KC_LT,    		KC_C, 		KC_D)
+
+COMB(WP_HASH, 		KC_HASH,  		KC_W, 		KC_P)
+COMB(RT_LCBR, 		KC_LCBR, 		HOME_R, 	HOME_T)
+COMB(XD_AMPR,   	KC_AMPR,   		KC_X, 		KC_D)
+
+COMB(QP_GRAVE,  	KC_GRAVE,  		KC_Q, 		KC_P)
+COMB(ZD_TILD,  	    KC_TILD,  		KC_Z, 		KC_D)
+
+
+COMB(LU_EQL, 		KC_EQL, 		KC_L, 		KC_U)
+COMB(NE_RBRC,		KC_RBRC,		HOME_N, 	HOME_E)
+COMB(HCOM_GT, 		KC_GT,    		KC_H, 		KC_COMM)
+
+COMB(UY_RPRN,		KC_RPRN,  		KC_U,		KC_Y)
+COMB(EI_RPRN, 		KC_RPRN,  		HOME_E, 	HOME_I)
+COMB(COMDOT_MINS,	KC_MINS, 		KC_COMM,	KC_DOT)
+
+COMB(LY_ASTR, 		KC_ASTR,  		KC_L, 		KC_Y)
+COMB(NI_RCBR,   	KC_RCBR,   		HOME_N, 	HOME_I)
+COMB(HDOT_PLUS,		KC_PLUS,  		KC_H, 		KC_DOT)
+
+COMB(LQUO_BSLS,  	KC_BSLS,  		KC_L, 		KC_QUOT)
+COMB(HCOLN_PIPE,    KC_PIPE,  		KC_H, 		KC_COLN)
