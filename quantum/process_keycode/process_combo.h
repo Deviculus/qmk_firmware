@@ -61,7 +61,6 @@ typedef struct {
     { .keys = &(ck)[0] }
 
 #define COMBO_END 0
-
 #ifndef COMBO_TERM
 #    define COMBO_TERM 50
 #endif
