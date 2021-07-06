@@ -42,7 +42,10 @@ void qk_leader_start(void);
 #    define LEADER_DICTIONARY() if (leading && timer_elapsed(leader_time) > LEADER_TIMEOUT)
 #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 #endif
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch

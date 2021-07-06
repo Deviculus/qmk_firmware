@@ -434,6 +434,9 @@ ifneq ($(findstring STM32G474, $(MCU)),)
   # UF2 settings
   UF2_FAMILY ?= STM32G4
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
 endif
 
 ifneq (,$(filter $(MCU),STM32L433 STM32L443))
@@ -472,8 +475,11 @@ ifneq (,$(filter $(MCU),STM32L433 STM32L443))
 
   # UF2 settings
   UF2_FAMILY ?= STM32L4
+<<<<<<< HEAD
 =======
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch
 endif
 
 ifneq (,$(filter $(MCU),at90usb162 atmega16u2 atmega32u2 atmega16u4 atmega32u4 at90usb646 at90usb647 at90usb1286 at90usb1287))

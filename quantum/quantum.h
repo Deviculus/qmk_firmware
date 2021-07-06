@@ -205,12 +205,18 @@ extern layer_state_t layer_state;
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
 #ifdef ENCODER_ENABLE
 #    include "encoder.h"
 #endif
 
+<<<<<<< HEAD
 =======
 >>>>>>> mod-tap-combos
+=======
+>>>>>>> dev_branch
 // For tri-layer
 void          update_tri_layer(uint8_t layer1, uint8_t layer2, uint8_t layer3);
 layer_state_t update_tri_layer_state(layer_state_t state, uint8_t layer1, uint8_t layer2, uint8_t layer3);

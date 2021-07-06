@@ -65,12 +65,15 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 #if defined(LED_DISABLE_AFTER_TIMEOUT) && !defined(LED_DISABLE_TIMEOUT)
 #    define LED_DISABLE_TIMEOUT (LED_DISABLE_AFTER_TIMEOUT * 1200UL)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #endif
 
 #ifndef LED_DISABLE_TIMEOUT
 #    define LED_DISABLE_TIMEOUT 0
 >>>>>>> mod-tap-combos
+=======
+>>>>>>> dev_branch
 #endif
 
 #ifndef LED_DISABLE_TIMEOUT
@@ -78,6 +81,9 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 #endif
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
 #if LED_DISABLE_WHEN_USB_SUSPENDED != 1
 #    undef LED_DISABLE_WHEN_USB_SUSPENDED
 #endif
@@ -85,6 +91,7 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 #if !defined(LED_MATRIX_MAXIMUM_BRIGHTNESS) || LED_MATRIX_MAXIMUM_BRIGHTNESS > UINT8_MAX
 #    undef LED_MATRIX_MAXIMUM_BRIGHTNESS
 #    define LED_MATRIX_MAXIMUM_BRIGHTNESS UINT8_MAX
+<<<<<<< HEAD
 =======
 #if !defined(LED_MATRIX_MAXIMUM_BRIGHTNESS) || LED_MATRIX_MAXIMUM_BRIGHTNESS > UINT8_MAX
 #    undef LED_MATRIX_MAXIMUM_BRIGHTNESS
@@ -110,6 +117,8 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 #if !defined(LED_MATRIX_STARTUP_SPD)
 #    define LED_MATRIX_STARTUP_SPD UINT8_MAX / 2
 >>>>>>> mod-tap-combos
+=======
+>>>>>>> dev_branch
 #endif
 
 #if !defined(LED_MATRIX_VAL_STEP)
@@ -325,6 +334,7 @@ static bool led_matrix_none(effect_params_t *params) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 static bool led_matrix_uniform_brightness(effect_params_t *params) {
     LED_MATRIX_USE_LIMITS(led_min, led_max);
@@ -338,6 +348,8 @@ static bool led_matrix_uniform_brightness(effect_params_t *params) {
 }
 
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch
 static void led_task_timers(void) {
 #if defined(LED_MATRIX_KEYREACTIVE_ENABLED) || LED_DISABLE_TIMEOUT > 0
     uint32_t deltaTime = sync_timer_elapsed32(led_timer_buffer);
@@ -351,6 +363,7 @@ static void led_task_timers(void) {
             led_anykey_timer = UINT32_MAX;
         } else {
             led_anykey_timer += deltaTime;
+<<<<<<< HEAD
         }
     }
 #endif  // LED_DISABLE_TIMEOUT > 0
@@ -368,6 +381,12 @@ static void led_task_timers(void) {
 #endif  // LED_MATRIX_KEYREACTIVE_ENABLED
 }
 <<<<<<< HEAD
+=======
+        }
+        last_hit_buffer.tick[i] += deltaTime;
+    }
+#endif  // LED_DISABLE_TIMEOUT > 0
+>>>>>>> dev_branch
 
 <<<<<<< HEAD
 static void led_task_sync(void) {
@@ -382,7 +401,18 @@ static void led_task_start(void) {
     // update double buffers
     g_led_timer = led_timer_buffer;
 #ifdef LED_MATRIX_KEYREACTIVE_ENABLED
+<<<<<<< HEAD
     g_last_hit_tracker = last_hit_buffer;
+=======
+    uint8_t count = last_hit_buffer.count;
+    for (uint8_t i = 0; i < count; ++i) {
+        if (UINT16_MAX - deltaTime < last_hit_buffer.tick[i]) {
+            last_hit_buffer.count--;
+            continue;
+        }
+        last_hit_buffer.tick[i] += deltaTime;
+    }
+>>>>>>> dev_branch
 #endif  // LED_MATRIX_KEYREACTIVE_ENABLED
 
     // next task
@@ -435,6 +465,9 @@ static void led_task_render(uint8_t effect) {
             rendering = led_matrix_none(&led_effect_params);
             break;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
 
 // ---------------------------------------------
 // -----Begin led effect switch case macros-----
@@ -449,10 +482,13 @@ static void led_task_render(uint8_t effect) {
 #    define LED_MATRIX_EFFECT(name, ...)          \
         case LED_MATRIX_CUSTOM_##name:            \
             rendering = name(&led_effect_params); \
+<<<<<<< HEAD
 =======
         case LED_MATRIX_UNIFORM_BRIGHTNESS:
             rendering = led_matrix_uniform_brightness(&led_effect_params);
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch
             break;
 #    ifdef LED_MATRIX_CUSTOM_KB
 #        include "led_matrix_kb.inc"
@@ -506,6 +542,7 @@ void led_matrix_task(void) {
 
     // Ideally we would also stop sending zeros to the LED driver PWM buffers
     // while suspended and just do a software shutdown. This is a cheap hack for now.
+<<<<<<< HEAD
     bool suspend_backlight =
 #if LED_DISABLE_WHEN_USB_SUSPENDED == true
         g_suspend_state ||
@@ -514,6 +551,13 @@ void led_matrix_task(void) {
         (led_anykey_timer > (uint32_t)LED_DISABLE_TIMEOUT) ||
 #endif  // LED_DISABLE_TIMEOUT > 0
         false;
+=======
+    bool suspend_backlight = suspend_state ||
+#if LED_DISABLE_TIMEOUT > 0
+                             (led_anykey_timer > (uint32_t)LED_DISABLE_TIMEOUT) ||
+#endif  // LED_DISABLE_TIMEOUT > 0
+                             false;
+>>>>>>> dev_branch
 
 >>>>>>> local-key-overrides
     uint8_t effect = suspend_backlight || !led_matrix_eeconfig.enable ? 0 : led_matrix_eeconfig.mode;
@@ -600,6 +644,9 @@ void led_matrix_init(void) {
 
 void led_matrix_set_suspend_state(bool state) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
 #ifdef LED_DISABLE_WHEN_USB_SUSPENDED
     if (state) {
         led_matrix_set_value_all(0);  // turn off all LEDs when suspending

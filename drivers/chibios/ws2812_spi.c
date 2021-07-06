@@ -67,15 +67,13 @@
 #    define WS2812_SPI_BUFFER_MODE 0  // normal buffer
 #endif
 
-<<<<<<< HEAD
+
 #if defined(USE_GPIOV1)
 #    define WS2812_SCK_OUTPUT_MODE PAL_MODE_STM32_ALTERNATE_PUSHPULL
 #else
 #    define WS2812_SCK_OUTPUT_MODE PAL_MODE_ALTERNATE(WS2812_SPI_SCK_PAL_MODE) | PAL_STM32_OTYPE_PUSHPULL
 #endif
 
-=======
->>>>>>> mod-tap-combos
 #define BYTES_FOR_LED_BYTE 4
 #define NB_COLORS 3
 #define BYTES_FOR_LED (BYTES_FOR_LED_BYTE * NB_COLORS)

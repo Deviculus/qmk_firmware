@@ -84,11 +84,11 @@ led_config_t g_led_config = { {
     4, 4, 1, 1, 1
 } };
 
-<<<<<<< HEAD
 void suspend_power_down_kb(void) {
     rgb_matrix_set_suspend_state(true);
     suspend_power_down_user();
-=======
+}
+
 #if defined(RGB_MATRIX_ENABLE) && !defined(RGB_MATRIX_SPLIT)
     if (!isLeftHand) {
         g_led_config = (led_config_t){ {
@@ -122,7 +122,9 @@ void suspend_power_down_kb(void) {
     }
 #endif
     matrix_init_user();
->>>>>>> mod-tap-combos
+void suspend_power_down_kb(void) {
+    rgb_matrix_set_suspend_state(true);
+    suspend_power_down_user();
 }
 
 void suspend_wakeup_init_kb(void) {

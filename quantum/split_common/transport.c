@@ -197,6 +197,7 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
     i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_RGB_MATRIX_START, (void *)rgb_matrix_config, sizeof(i2c_buffer->rgb_matrix), TIMEOUT);
     bool suspend_state = rgb_matrix_get_suspend_state();
     i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_RGB_SUSPEND_START, (void *)suspend_state, sizeof(i2c_buffer->rgb_suspend_state), TIMEOUT);
+<<<<<<< HEAD
 =======
 =======
 #    if defined(LED_MATRIX_ENABLE) && defined(LED_MATRIX_SPLIT)
@@ -208,6 +209,8 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
     i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_RGB_MATRIX_START, (void *)rgb_matrix_config, sizeof(i2c_buffer->rgb_matrix), TIMEOUT);
     i2c_writeReg(SLAVE_I2C_ADDRESS, I2C_RGB_SUSPEND_START, (void *)g_suspend_state, sizeof(i2c_buffer->rgb_suspend_state), TIMEOUT);
 >>>>>>> mod-tap-combos
+=======
+>>>>>>> dev_branch
 #    endif
 
 #    ifndef DISABLE_SYNC_TIMER
@@ -261,6 +264,7 @@ void transport_slave(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) 
 #    if defined(LED_MATRIX_ENABLE) && defined(LED_MATRIX_SPLIT)
     memcpy((void *)i2c_buffer->led_matrix, (void *)led_matrix_eeconfig, sizeof(i2c_buffer->led_matrix));
     led_matrix_set_suspend_state(i2c_buffer->led_suspend_state);
+<<<<<<< HEAD
 #    endif
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     memcpy((void *)i2c_buffer->rgb_matrix, (void *)rgb_matrix_config, sizeof(i2c_buffer->rgb_matrix));
@@ -270,12 +274,18 @@ void transport_slave(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) 
 #    if defined(LED_MATRIX_ENABLE) && defined(LED_MATRIX_SPLIT)
     memcpy((void *)i2c_buffer->led_matrix, (void *)led_matrix_eeconfig, sizeof(i2c_buffer->led_matrix));
     memcpy((void *)i2c_buffer->led_suspend_state, (void *)g_suspend_state, sizeof(i2c_buffer->led_suspend_state));
+=======
+>>>>>>> dev_branch
 #    endif
 >>>>>>> local-key-overrides
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     memcpy((void *)i2c_buffer->rgb_matrix, (void *)rgb_matrix_config, sizeof(i2c_buffer->rgb_matrix));
+<<<<<<< HEAD
     memcpy((void *)i2c_buffer->rgb_suspend_state, (void *)g_suspend_state, sizeof(i2c_buffer->rgb_suspend_state));
 >>>>>>> mod-tap-combos
+=======
+    rgb_matrix_set_suspend_state(i2c_buffer->rgb_suspend_state);
+>>>>>>> dev_branch
 #    endif
 }
 
@@ -300,6 +310,9 @@ typedef struct _Serial_s2m_buffer_t {
 typedef struct _Serial_m2s_buffer_t {
 #    ifdef SPLIT_MODS_ENABLE
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
     uint8_t real_mods;
     uint8_t weak_mods;
 #        ifndef NO_ACTION_ONESHOT
@@ -308,6 +321,7 @@ typedef struct _Serial_m2s_buffer_t {
 #    endif
 #    ifndef DISABLE_SYNC_TIMER
     uint32_t sync_timer;
+<<<<<<< HEAD
 =======
     uint8_t        real_mods;
     uint8_t        weak_mods;
@@ -318,22 +332,30 @@ typedef struct _Serial_m2s_buffer_t {
 #    ifndef DISABLE_SYNC_TIMER
     uint32_t       sync_timer;
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch
 #    endif
 #    ifdef SPLIT_TRANSPORT_MIRROR
     matrix_row_t   mmatrix[ROWS_PER_HAND];
 #    endif
 #    ifdef BACKLIGHT_ENABLE
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
     uint8_t backlight_level;
 #    endif
 #    ifdef WPM_ENABLE
     uint8_t current_wpm;
+<<<<<<< HEAD
 =======
     uint8_t        backlight_level;
 #    endif
 #    ifdef WPM_ENABLE
     uint8_t        current_wpm;
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch
 #    endif
 #    if defined(LED_MATRIX_ENABLE) && defined(LED_MATRIX_SPLIT)
     led_eeconfig_t led_matrix;
@@ -343,12 +365,15 @@ typedef struct _Serial_m2s_buffer_t {
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     rgb_config_t rgb_matrix;
     bool         rgb_suspend_state;
+<<<<<<< HEAD
 =======
 >>>>>>> local-key-overrides
 #    endif
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     rgb_config_t   rgb_matrix;
     bool           rgb_suspend_state;
+=======
+>>>>>>> dev_branch
 #    endif
 } Serial_m2s_buffer_t;
 
@@ -458,12 +483,16 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
 #    ifdef WPM_ENABLE
     // Write wpm to slave
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dev_branch
     serial_m2s_buffer.current_wpm = get_current_wpm();
 #    endif
 
 #    ifdef SPLIT_MODS_ENABLE
     serial_m2s_buffer.real_mods = get_mods();
     serial_m2s_buffer.weak_mods = get_weak_mods();
+<<<<<<< HEAD
 =======
     serial_m2s_buffer.current_wpm       = get_current_wpm();
 #    endif
@@ -472,6 +501,8 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
     serial_m2s_buffer.real_mods         = get_mods();
     serial_m2s_buffer.weak_mods         = get_weak_mods();
 >>>>>>> mod-tap-combos
+=======
+>>>>>>> dev_branch
 #        ifndef NO_ACTION_ONESHOT
     serial_m2s_buffer.oneshot_mods      = get_oneshot_mods();
 #        endif
@@ -482,6 +513,7 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
 #    if defined(LED_MATRIX_ENABLE) && defined(LED_MATRIX_SPLIT)
     serial_m2s_buffer.led_matrix        = led_matrix_eeconfig;
     serial_m2s_buffer.led_suspend_state = led_matrix_get_suspend_state();
+<<<<<<< HEAD
 #    endif
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     serial_m2s_buffer.rgb_matrix        = rgb_matrix_config;
@@ -495,6 +527,8 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
 #    if defined(LED_MATRIX_ENABLE) && defined(LED_MATRIX_SPLIT)
     serial_m2s_buffer.led_matrix        = led_matrix_econfig;
     serial_m2s_buffer.led_suspend_state = g_suspend_state;
+=======
+>>>>>>> dev_branch
 #    endif
 >>>>>>> local-key-overrides
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
@@ -503,8 +537,12 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
 #    endif
 
 #    ifndef DISABLE_SYNC_TIMER
+<<<<<<< HEAD
     serial_m2s_buffer.sync_timer        = sync_timer_read32() + SYNC_TIMER_OFFSET;
 >>>>>>> mod-tap-combos
+=======
+    serial_m2s_buffer.sync_timer = sync_timer_read32() + SYNC_TIMER_OFFSET;
+>>>>>>> dev_branch
 #    endif
     return true;
 }
@@ -551,6 +589,7 @@ void transport_slave(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) 
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     rgb_matrix_config = serial_m2s_buffer.rgb_matrix;
     rgb_matrix_set_suspend_state(serial_m2s_buffer.rgb_suspend_state);
+<<<<<<< HEAD
 =======
 #    if defined(RGB_MATRIX_ENABLE) && defined(RGB_MATRIX_SPLIT)
     rgb_matrix_config = serial_m2s_buffer.rgb_matrix;
@@ -565,6 +604,8 @@ void transport_slave(matrix_row_t master_matrix[], matrix_row_t slave_matrix[]) 
     rgb_matrix_config   = serial_m2s_buffer.rgb_matrix;
     g_suspend_state     = serial_m2s_buffer.rgb_suspend_state;
 >>>>>>> local-key-overrides
+=======
+>>>>>>> dev_branch
 #    endif
 }
 

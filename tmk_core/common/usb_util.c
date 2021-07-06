@@ -14,12 +14,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "quantum.h"
 #include "usb_util.h"
 =======
 #include "usb_util.h"
 #include "wait.h"
 >>>>>>> mod-tap-combos
+=======
+#include "quantum.h"
+#include "usb_util.h"
+>>>>>>> dev_branch
 
 __attribute__((weak)) void usb_disable(void) {}
 __attribute__((weak)) bool usb_connected_state(void) { return true; }
