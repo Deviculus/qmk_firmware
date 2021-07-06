@@ -118,6 +118,10 @@ extern layer_state_t layer_state;
 #    include "process_unicodemap.h"
 #endif
 
+#ifdef KEY_OVERRIDE_ENABLE
+#    include "process_key_override.h"
+#endif
+
 #ifdef TAP_DANCE_ENABLE
 #    include "process_tap_dance.h"
 #endif
@@ -198,10 +202,6 @@ extern layer_state_t layer_state;
 
 #ifdef USBPD_ENABLE
 #    include "usbpd.h"
-#endif
-
-#ifdef ENCODER_ENABLE
-#    include "encoder.h"
 #endif
 
 // For tri-layer

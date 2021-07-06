@@ -1,4 +1,8 @@
+<<<<<<< HEAD:keyboards/plx/keymaps/via/config.h
 /* Copyright 2020 Peac Design and Basekeys.com
+=======
+/* Copyright 2021 Dave Vandyke <kzar@kzar.co.uk>
+>>>>>>> local-key-overrides:keyboards/kinesis/kint36/keymaps/kzar/config.h
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,4 +20,4 @@
  
 #pragma once
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+#undef LED_COMPOSE_PIN
