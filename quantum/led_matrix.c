@@ -262,6 +262,7 @@ static void led_task_timers(void) {
         } else {
             led_anykey_timer += deltaTime;
         }
+        last_hit_buffer.tick[i] += deltaTime;
     }
 #endif  // LED_DISABLE_TIMEOUT > 0
 

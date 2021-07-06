@@ -1,4 +1,5 @@
-/* Copyright 2021 Dave Vandyke <kzar@kzar.co.uk>
+
+/* Copyright 2020 Peac Design and Basekeys.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

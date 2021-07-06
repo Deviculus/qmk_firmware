@@ -257,7 +257,7 @@ typedef struct _Serial_m2s_buffer_t {
     uint32_t sync_timer;
 #    endif
 #    ifdef SPLIT_TRANSPORT_MIRROR
-    matrix_row_t mmatrix[ROWS_PER_HAND];
+    matrix_row_t   mmatrix[ROWS_PER_HAND];
 #    endif
 #    ifdef BACKLIGHT_ENABLE
     uint8_t backlight_level;
@@ -387,7 +387,7 @@ bool transport_master(matrix_row_t master_matrix[], matrix_row_t slave_matrix[])
     serial_m2s_buffer.real_mods = get_mods();
     serial_m2s_buffer.weak_mods = get_weak_mods();
 #        ifndef NO_ACTION_ONESHOT
-    serial_m2s_buffer.oneshot_mods = get_oneshot_mods();
+    serial_m2s_buffer.oneshot_mods      = get_oneshot_mods();
 #        endif
 #    endif
 
