@@ -234,9 +234,13 @@ endif
     SRC += $(QUANTUM_DIR)/led_matrix.c
     SRC += $(QUANTUM_DIR)/led_matrix_drivers.c
 <<<<<<< HEAD
+<<<<<<< HEAD
     CIE1931_CURVE := yes
 =======
 >>>>>>> mod-tap-combos
+=======
+    CIE1931_CURVE := yes
+>>>>>>> local-key-overrides
 
     ifeq ($(strip $(LED_MATRIX_DRIVER)), IS31FL3731)
         OPT_DEFS += -DIS31FL3731 -DSTM32_I2C -DHAL_USE_I2C=TRUE
@@ -319,6 +323,11 @@ ifeq ($(strip $(PRINTING_ENABLE)), yes)
     OPT_DEFS += -DPRINTING_ENABLE
     SRC += $(QUANTUM_DIR)/process_keycode/process_printer.c
     SRC += $(TMK_DIR)/protocol/serial_uart.c
+endif
+
+ifeq ($(strip $(KEY_OVERRIDE_ENABLE)), yes)
+    OPT_DEFS += -DKEY_OVERRIDE_ENABLE
+    SRC += $(QUANTUM_DIR)/process_keycode/process_key_override.c
 endif
 
 ifeq ($(strip $(SERIAL_LINK_ENABLE)), yes)
@@ -472,10 +481,14 @@ ifneq ($(strip $(BOOTMAGIC_ENABLE)), no)
     $(error BOOTMAGIC_ENABLE="$(BOOTMAGIC_ENABLE)" is not a valid type of magic)
   endif
 <<<<<<< HEAD
+<<<<<<< HEAD
   ifneq ($(strip $(BOOTMAGIC_ENABLE)), full)
 =======
   ifeq ($(strip $(BOOTMAGIC_ENABLE)), lite)
 >>>>>>> mod-tap-combos
+=======
+  ifneq ($(strip $(BOOTMAGIC_ENABLE)), full)
+>>>>>>> local-key-overrides
       OPT_DEFS += -DBOOTMAGIC_LITE
       QUANTUM_SRC += $(QUANTUM_DIR)/bootmagic/bootmagic_lite.c
   else

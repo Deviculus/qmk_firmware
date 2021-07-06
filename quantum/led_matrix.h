@@ -53,6 +53,7 @@
 enum led_matrix_effects {
     LED_MATRIX_NONE = 0,
 
+<<<<<<< HEAD
 // --------------------------------------
 // -----Begin led effect enum macros-----
 #define LED_MATRIX_EFFECT(name, ...) LED_MATRIX_##name,
@@ -71,6 +72,10 @@ enum led_matrix_effects {
 #endif
     // --------------------------------------
     // -----End led effect enum macros-------
+=======
+    LED_MATRIX_UNIFORM_BRIGHTNESS,
+    // All new effects go above this line
+>>>>>>> local-key-overrides
 
     LED_MATRIX_EFFECT_MAX
 };
@@ -150,6 +155,10 @@ extern const led_matrix_driver_t led_matrix_driver;
 
 extern led_eeconfig_t led_matrix_eeconfig;
 
+<<<<<<< HEAD
+=======
+extern bool         g_suspend_state;
+>>>>>>> local-key-overrides
 extern uint32_t     g_led_timer;
 extern led_config_t g_led_config;
 #ifdef LED_MATRIX_KEYREACTIVE_ENABLED

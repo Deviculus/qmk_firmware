@@ -505,6 +505,7 @@ enum quantum_keycodes {
 #define SQ_S(n) (n < SEQUENCER_STEPS ? SEQUENCER_STEP_MIN + n : KC_NO)
 #define SQ_R(n) (n < SEQUENCER_RESOLUTIONS ? SEQUENCER_RESOLUTION_MIN + n : KC_NO)
 #define SQ_T(n) (n < SEQUENCER_TRACKS ? SEQUENCER_TRACK_MIN + n : KC_NO)
+<<<<<<< HEAD
 
     // One Shot
     ONESHOT_ENABLE,
@@ -517,12 +518,28 @@ enum quantum_keycodes {
 <<<<<<< HEAD
     // Start of custom keycode range for keyboards and keymaps - always leave at the end
 =======
+=======
+
+    // One Shot
+>>>>>>> local-key-overrides
     ONESHOT_ENABLE,
     ONESHOT_DISABLE,
     ONESHOT_TOGGLE,
 
+<<<<<<< HEAD
     // always leave at the end
 >>>>>>> mod-tap-combos
+=======
+    // RGB underglow/matrix (continued)
+    RGB_MODE_TWINKLE,
+
+    // Key Overrides
+    KEY_OVERRIDE_TOGGLE,
+    KEY_OVERRIDE_ON,
+    KEY_OVERRIDE_OFF,
+
+    // Start of custom keycode range for keyboards and keymaps - always leave at the end
+>>>>>>> local-key-overrides
     SAFE_RANGE
 };
 
@@ -630,19 +647,27 @@ enum quantum_keycodes {
 #define KC_DELT KC_DELETE  // Del key (four letter code)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Modified keycode aliases
 =======
 // Aliases
 >>>>>>> mod-tap-combos
+=======
+// Modified keycode aliases
+>>>>>>> local-key-overrides
 #define C(kc) LCTL(kc)
 #define S(kc) LSFT(kc)
 #define A(kc) LALT(kc)
 #define G(kc) LGUI(kc)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Deprecated - do not use
 =======
 >>>>>>> mod-tap-combos
+=======
+// Deprecated - do not use
+>>>>>>> local-key-overrides
 #define F(kc) (QK_FUNCTION | (kc))
 #define M(kc) (QK_MACRO | (kc))
 #define MACROTAP(kc) (QK_MACRO | (FUNC_TAP << 8) | (kc))
@@ -851,14 +876,20 @@ enum quantum_keycodes {
 #define DM_PLY2 DYN_MACRO_PLAY2
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> local-key-overrides
 // Joystick aliases
 #define JS_BUTTON_MIN JS_BUTTON0
 #define JS_BUTTON_MAX JS_BUTTON31
 
 // One Shot aliases
+<<<<<<< HEAD
 =======
 // One Shot toggle
 >>>>>>> mod-tap-combos
+=======
+>>>>>>> local-key-overrides
 #define OS_TOGG ONESHOT_TOGGLE
 #define OS_ON ONESHOT_ENABLE
 #define OS_OFF ONESHOT_DISABLE

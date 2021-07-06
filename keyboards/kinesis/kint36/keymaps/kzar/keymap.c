@@ -375,7 +375,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("Keyboard> " QMK_KEYBOARD "\n");
                 SEND_STRING("Keymap> " QMK_KEYMAP "\n");
 
+<<<<<<< HEAD
                 if (layer_state_cmp(default_layer_state, _QWERTY))
+=======
+                if (layer_state_is(_QWERTY))
+>>>>>>> local-key-overrides
                     SEND_STRING("Layout> QWERTY\n");
                 else
                     SEND_STRING("Layout> DVORAK\n");

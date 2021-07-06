@@ -8,6 +8,14 @@
 .clang_complete
 .build/
 *.elf
+<<<<<<< HEAD
+=======
+*.hex
+*.uf2
+*.qmk
+!util/bootloader.hex
+!quantum/tools/eeprom_reset.hex
+>>>>>>> local-key-overrides
 *.log
 *.lss
 *.lst
