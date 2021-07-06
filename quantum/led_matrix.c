@@ -61,12 +61,20 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 
 #if defined(LED_DISABLE_AFTER_TIMEOUT) && !defined(LED_DISABLE_TIMEOUT)
 #    define LED_DISABLE_TIMEOUT (LED_DISABLE_AFTER_TIMEOUT * 1200UL)
+<<<<<<< HEAD
+=======
+#endif
+
+#ifndef LED_DISABLE_TIMEOUT
+#    define LED_DISABLE_TIMEOUT 0
+>>>>>>> mod-tap-combos
 #endif
 
 #ifndef LED_DISABLE_TIMEOUT
 #    define LED_DISABLE_TIMEOUT 0
 #endif
 
+<<<<<<< HEAD
 #if LED_DISABLE_WHEN_USB_SUSPENDED != 1
 #    undef LED_DISABLE_WHEN_USB_SUSPENDED
 #endif
@@ -74,6 +82,31 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 #if !defined(LED_MATRIX_MAXIMUM_BRIGHTNESS) || LED_MATRIX_MAXIMUM_BRIGHTNESS > UINT8_MAX
 #    undef LED_MATRIX_MAXIMUM_BRIGHTNESS
 #    define LED_MATRIX_MAXIMUM_BRIGHTNESS UINT8_MAX
+=======
+#if !defined(LED_MATRIX_MAXIMUM_BRIGHTNESS) || LED_MATRIX_MAXIMUM_BRIGHTNESS > UINT8_MAX
+#    undef LED_MATRIX_MAXIMUM_BRIGHTNESS
+#    define LED_MATRIX_MAXIMUM_BRIGHTNESS UINT8_MAX
+#endif
+
+#if !defined(LED_MATRIX_VAL_STEP)
+#    define LED_MATRIX_VAL_STEP 8
+#endif
+
+#if !defined(LED_MATRIX_SPD_STEP)
+#    define LED_MATRIX_SPD_STEP 16
+#endif
+
+#if !defined(LED_MATRIX_STARTUP_MODE)
+#    define LED_MATRIX_STARTUP_MODE LED_MATRIX_UNIFORM_BRIGHTNESS
+#endif
+
+#if !defined(LED_MATRIX_STARTUP_VAL)
+#    define LED_MATRIX_STARTUP_VAL LED_MATRIX_MAXIMUM_BRIGHTNESS
+#endif
+
+#if !defined(LED_MATRIX_STARTUP_SPD)
+#    define LED_MATRIX_STARTUP_SPD UINT8_MAX / 2
+>>>>>>> mod-tap-combos
 #endif
 
 #if !defined(LED_MATRIX_VAL_STEP)
@@ -92,6 +125,7 @@ const led_point_t k_led_matrix_center = LED_MATRIX_CENTER;
 #    define LED_MATRIX_STARTUP_VAL LED_MATRIX_MAXIMUM_BRIGHTNESS
 #endif
 
+<<<<<<< HEAD
 #if !defined(LED_MATRIX_STARTUP_SPD)
 #    define LED_MATRIX_STARTUP_SPD UINT8_MAX / 2
 #endif
@@ -129,6 +163,10 @@ const uint8_t k_led_matrix_split[2] = LED_MATRIX_SPLIT;
 
 void eeconfig_read_led_matrix(void) { eeprom_read_block(&led_matrix_eeconfig, EECONFIG_LED_MATRIX, sizeof(led_matrix_eeconfig)); }
 
+=======
+void eeconfig_read_led_matrix(void) { eeprom_read_block(&led_matrix_eeconfig, EECONFIG_LED_MATRIX, sizeof(led_matrix_eeconfig)); }
+
+>>>>>>> mod-tap-combos
 void eeconfig_update_led_matrix(void) { eeprom_update_block(&led_matrix_eeconfig, EECONFIG_LED_MATRIX, sizeof(led_matrix_eeconfig)); }
 
 void eeconfig_update_led_matrix_default(void) {
@@ -137,7 +175,10 @@ void eeconfig_update_led_matrix_default(void) {
     led_matrix_eeconfig.mode   = LED_MATRIX_STARTUP_MODE;
     led_matrix_eeconfig.val    = LED_MATRIX_STARTUP_VAL;
     led_matrix_eeconfig.speed  = LED_MATRIX_STARTUP_SPD;
+<<<<<<< HEAD
     led_matrix_eeconfig.flags  = LED_FLAG_ALL;
+=======
+>>>>>>> mod-tap-combos
     eeconfig_update_led_matrix();
 }
 
@@ -205,6 +246,7 @@ void process_led_matrix(uint8_t row, uint8_t col, bool pressed) {
     uint8_t led[LED_HITS_TO_REMEMBER];
     uint8_t led_count = 0;
 
+<<<<<<< HEAD
 #    if defined(LED_MATRIX_KEYRELEASES)
     if (!pressed)
 #    elif defined(LED_MATRIX_KEYPRESSES)
@@ -213,6 +255,10 @@ void process_led_matrix(uint8_t row, uint8_t col, bool pressed) {
     {
         led_count = led_matrix_map_row_column_to_led(row, col, led);
     }
+=======
+// Uniform brightness
+void led_matrix_uniform_brightness(void) { led_matrix_set_index_value_all(led_matrix_eeconfig.val); }
+>>>>>>> mod-tap-combos
 
     if (last_hit_buffer.count + led_count > LED_HITS_TO_REMEMBER) {
         memcpy(&last_hit_buffer.x[0], &last_hit_buffer.x[led_count], LED_HITS_TO_REMEMBER - led_count);
@@ -278,6 +324,7 @@ static void led_task_timers(void) {
 #endif  // LED_MATRIX_KEYREACTIVE_ENABLED
 }
 
+<<<<<<< HEAD
 static void led_task_sync(void) {
     // next task
     if (sync_timer_elapsed32(g_led_timer) >= LED_MATRIX_LED_FLUSH_LIMIT) led_task_state = STARTING;
@@ -304,6 +351,12 @@ static void led_task_render(uint8_t effect) {
         led_effect_params.flags = led_matrix_eeconfig.flags;
         led_matrix_set_value_all(0);
     }
+=======
+    // Ideally we would also stop sending zeros to the LED driver PWM buffers
+    // while suspended and just do a software shutdown. This is a cheap hack for now.
+    bool    suspend_backlight = ((g_suspend_state && LED_DISABLE_WHEN_USB_SUSPENDED) || (LED_DISABLE_TIMEOUT > 0 && g_any_key_hit > LED_DISABLE_TIMEOUT));
+    uint8_t effect            = suspend_backlight ? 0 : led_matrix_eeconfig.mode;
+>>>>>>> mod-tap-combos
 
     // each effect can opt to do calculations
     // and/or request PWM buffer updates.
@@ -468,17 +521,25 @@ bool led_matrix_get_suspend_state(void) { return suspend_state; }
 
 void led_matrix_toggle_eeprom_helper(bool write_to_eeprom) {
     led_matrix_eeconfig.enable ^= 1;
+<<<<<<< HEAD
     led_task_state = STARTING;
     if (write_to_eeprom) {
         eeconfig_update_led_matrix();
     }
     dprintf("led matrix toggle [%s]: led_matrix_eeconfig.enable = %u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", led_matrix_eeconfig.enable);
+=======
+    eeconfig_update_led_matrix();
+>>>>>>> mod-tap-combos
 }
 void led_matrix_toggle_noeeprom(void) { led_matrix_toggle_eeprom_helper(false); }
 void led_matrix_toggle(void) { led_matrix_toggle_eeprom_helper(true); }
 
 void led_matrix_enable(void) {
+<<<<<<< HEAD
     led_matrix_enable_noeeprom();
+=======
+    led_matrix_eeconfig.enable = 1;
+>>>>>>> mod-tap-combos
     eeconfig_update_led_matrix();
 }
 
@@ -495,6 +556,10 @@ void led_matrix_disable(void) {
 void led_matrix_disable_noeeprom(void) {
     if (led_matrix_eeconfig.enable) led_task_state = STARTING;
     led_matrix_eeconfig.enable = 0;
+<<<<<<< HEAD
+=======
+    eeconfig_update_led_matrix();
+>>>>>>> mod-tap-combos
 }
 
 uint8_t led_matrix_is_enabled(void) { return led_matrix_eeconfig.enable; }
@@ -503,9 +568,18 @@ void led_matrix_mode_eeprom_helper(uint8_t mode, bool write_to_eeprom) {
     if (!led_matrix_eeconfig.enable) {
         return;
     }
+<<<<<<< HEAD
     if (mode < 1) {
         led_matrix_eeconfig.mode = 1;
     } else if (mode >= LED_MATRIX_EFFECT_MAX) {
+=======
+    eeconfig_update_led_matrix();
+}
+
+void led_matrix_step_reverse(void) {
+    led_matrix_eeconfig.mode--;
+    if (led_matrix_eeconfig.mode < 1) {
+>>>>>>> mod-tap-combos
         led_matrix_eeconfig.mode = LED_MATRIX_EFFECT_MAX - 1;
     } else {
         led_matrix_eeconfig.mode = mode;
@@ -514,27 +588,49 @@ void led_matrix_mode_eeprom_helper(uint8_t mode, bool write_to_eeprom) {
     if (write_to_eeprom) {
         eeconfig_update_led_matrix();
     }
+<<<<<<< HEAD
     dprintf("led matrix mode [%s]: %u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", led_matrix_eeconfig.mode);
+=======
+    eeconfig_update_led_matrix();
+>>>>>>> mod-tap-combos
 }
 void led_matrix_mode_noeeprom(uint8_t mode) { led_matrix_mode_eeprom_helper(mode, false); }
 void led_matrix_mode(uint8_t mode) { led_matrix_mode_eeprom_helper(mode, true); }
 
+<<<<<<< HEAD
 uint8_t led_matrix_get_mode(void) { return led_matrix_eeconfig.mode; }
 
 void led_matrix_step_helper(bool write_to_eeprom) {
     uint8_t mode = led_matrix_eeconfig.mode + 1;
     led_matrix_mode_eeprom_helper((mode < LED_MATRIX_EFFECT_MAX) ? mode : 1, write_to_eeprom);
+=======
+void led_matrix_increase_val(void) {
+    led_matrix_eeconfig.val = increment(led_matrix_eeconfig.val, 8, 0, LED_MATRIX_MAXIMUM_BRIGHTNESS);
+    eeconfig_update_led_matrix();
+}
+
+void led_matrix_decrease_val(void) {
+    led_matrix_eeconfig.val = decrement(led_matrix_eeconfig.val, 8, 0, LED_MATRIX_MAXIMUM_BRIGHTNESS);
+    eeconfig_update_led_matrix();
+>>>>>>> mod-tap-combos
 }
 void led_matrix_step_noeeprom(void) { led_matrix_step_helper(false); }
 void led_matrix_step(void) { led_matrix_step_helper(true); }
 
+<<<<<<< HEAD
 void led_matrix_step_reverse_helper(bool write_to_eeprom) {
     uint8_t mode = led_matrix_eeconfig.mode - 1;
     led_matrix_mode_eeprom_helper((mode < 1) ? LED_MATRIX_EFFECT_MAX - 1 : mode, write_to_eeprom);
+=======
+void led_matrix_increase_speed(void) {
+    led_matrix_eeconfig.speed = increment(led_matrix_eeconfig.speed, 1, 0, 3);
+    eeconfig_update_led_matrix();  // EECONFIG needs to be increased to support this
+>>>>>>> mod-tap-combos
 }
 void led_matrix_step_reverse_noeeprom(void) { led_matrix_step_reverse_helper(false); }
 void led_matrix_step_reverse(void) { led_matrix_step_reverse_helper(true); }
 
+<<<<<<< HEAD
 void led_matrix_set_val_eeprom_helper(uint8_t val, bool write_to_eeprom) {
     if (!led_matrix_eeconfig.enable) {
         return;
@@ -544,10 +640,16 @@ void led_matrix_set_val_eeprom_helper(uint8_t val, bool write_to_eeprom) {
         eeconfig_update_led_matrix();
     }
     dprintf("led matrix set val [%s]: %u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", led_matrix_eeconfig.val);
+=======
+void led_matrix_decrease_speed(void) {
+    led_matrix_eeconfig.speed = decrement(led_matrix_eeconfig.speed, 1, 0, 3);
+    eeconfig_update_led_matrix();  // EECONFIG needs to be increased to support this
+>>>>>>> mod-tap-combos
 }
 void led_matrix_set_val_noeeprom(uint8_t val) { led_matrix_set_val_eeprom_helper(val, false); }
 void led_matrix_set_val(uint8_t val) { led_matrix_set_val_eeprom_helper(val, true); }
 
+<<<<<<< HEAD
 uint8_t led_matrix_get_val(void) { return led_matrix_eeconfig.val; }
 
 void led_matrix_increase_val_helper(bool write_to_eeprom) { led_matrix_set_val_eeprom_helper(qadd8(led_matrix_eeconfig.val, LED_MATRIX_VAL_STEP), write_to_eeprom); }
@@ -561,6 +663,11 @@ void led_matrix_decrease_val(void) { led_matrix_decrease_val_helper(true); }
 void led_matrix_set_speed_eeprom_helper(uint8_t speed, bool write_to_eeprom) {
     led_matrix_eeconfig.speed = speed;
     if (write_to_eeprom) {
+=======
+void led_matrix_mode(uint8_t mode, bool eeprom_write) {
+    led_matrix_eeconfig.mode = mode;
+    if (eeprom_write) {
+>>>>>>> mod-tap-combos
         eeconfig_update_led_matrix();
     }
     dprintf("led matrix set speed [%s]: %u\n", (write_to_eeprom) ? "EEPROM" : "NOEEPROM", led_matrix_eeconfig.speed);
@@ -574,6 +681,7 @@ void led_matrix_increase_speed_helper(bool write_to_eeprom) { led_matrix_set_spe
 void led_matrix_increase_speed_noeeprom(void) { led_matrix_increase_speed_helper(false); }
 void led_matrix_increase_speed(void) { led_matrix_increase_speed_helper(true); }
 
+<<<<<<< HEAD
 void led_matrix_decrease_speed_helper(bool write_to_eeprom) { led_matrix_set_speed_eeprom_helper(qsub8(led_matrix_eeconfig.speed, LED_MATRIX_SPD_STEP), write_to_eeprom); }
 void led_matrix_decrease_speed_noeeprom(void) { led_matrix_decrease_speed_helper(false); }
 void led_matrix_decrease_speed(void) { led_matrix_decrease_speed_helper(true); }
@@ -581,3 +689,9 @@ void led_matrix_decrease_speed(void) { led_matrix_decrease_speed_helper(true); }
 led_flags_t led_matrix_get_flags(void) { return led_matrix_eeconfig.flags; }
 
 void led_matrix_set_flags(led_flags_t flags) { led_matrix_eeconfig.flags = flags; }
+=======
+void led_matrix_set_value(uint8_t val) {
+    led_matrix_set_value_noeeprom(val);
+    eeconfig_update_led_matrix();
+}
+>>>>>>> mod-tap-combos

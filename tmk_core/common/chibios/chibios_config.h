@@ -15,9 +15,13 @@
  */
 #pragma once
 
+<<<<<<< HEAD
 #ifndef USB_VBUS_PIN
 #    define SPLIT_USB_DETECT  // Force this on when dedicated pin is not used
 #endif
+=======
+#define SPLIT_USB_DETECT  // Force this on for now
+>>>>>>> mod-tap-combos
 
 #if defined(STM32F1XX)
 #    define USE_GPIOV1

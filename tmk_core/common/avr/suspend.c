@@ -28,9 +28,12 @@
 #    include "rgblight.h"
 #endif
 
+<<<<<<< HEAD
 #ifdef LED_MATRIX_ENABLE
 #    include "led_matrix.h"
 #endif
+=======
+>>>>>>> mod-tap-combos
 #ifdef RGB_MATRIX_ENABLE
 #    include "rgb_matrix.h"
 #endif

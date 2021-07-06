@@ -3,8 +3,12 @@
 MCU = STM32F072
 BOARD = DURGOD_STM32_F070
 
+<<<<<<< HEAD
 # Bootloader selection
 BOOTLOADER = stm32-dfu
+=======
+BOARD = DURGOD_STM32_F070
+>>>>>>> mod-tap-combos
 
 # Do not put the microcontroller into power saving mode
 OPT_DEFS += -DNO_SUSPEND_POWER_DOWN

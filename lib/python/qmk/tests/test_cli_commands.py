@@ -8,7 +8,11 @@ is_windows = 'windows' in platform.platform().lower()
 
 def check_subcommand(command, *args):
     cmd = ['qmk', command, *args]
+<<<<<<< HEAD
     result = cli.run(cmd, stdin=DEVNULL, combined_output=True)
+=======
+    result = run(cmd, stdout=PIPE, stderr=STDOUT, universal_newlines=True)
+>>>>>>> mod-tap-combos
     return result
 
 
@@ -17,7 +21,11 @@ def check_subcommand_stdin(file_to_read, command, *args):
     """
     with open(file_to_read, encoding='utf-8') as my_file:
         cmd = ['qmk', command, *args]
+<<<<<<< HEAD
         result = cli.run(cmd, stdin=my_file, combined_output=True)
+=======
+        result = run(cmd, stdin=my_file, stdout=PIPE, stderr=STDOUT, universal_newlines=True)
+>>>>>>> mod-tap-combos
     return result
 
 

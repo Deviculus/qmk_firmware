@@ -514,7 +514,15 @@ enum quantum_keycodes {
     // RGB underglow/matrix (continued)
     RGB_MODE_TWINKLE,
 
+<<<<<<< HEAD
     // Start of custom keycode range for keyboards and keymaps - always leave at the end
+=======
+    ONESHOT_ENABLE,
+    ONESHOT_DISABLE,
+    ONESHOT_TOGGLE,
+
+    // always leave at the end
+>>>>>>> mod-tap-combos
     SAFE_RANGE
 };
 
@@ -621,13 +629,20 @@ enum quantum_keycodes {
 
 #define KC_DELT KC_DELETE  // Del key (four letter code)
 
+<<<<<<< HEAD
 // Modified keycode aliases
+=======
+// Aliases
+>>>>>>> mod-tap-combos
 #define C(kc) LCTL(kc)
 #define S(kc) LSFT(kc)
 #define A(kc) LALT(kc)
 #define G(kc) LGUI(kc)
 
+<<<<<<< HEAD
 // Deprecated - do not use
+=======
+>>>>>>> mod-tap-combos
 #define F(kc) (QK_FUNCTION | (kc))
 #define M(kc) (QK_MACRO | (kc))
 #define MACROTAP(kc) (QK_MACRO | (FUNC_TAP << 8) | (kc))
@@ -835,11 +850,15 @@ enum quantum_keycodes {
 #define DM_PLY1 DYN_MACRO_PLAY1
 #define DM_PLY2 DYN_MACRO_PLAY2
 
+<<<<<<< HEAD
 // Joystick aliases
 #define JS_BUTTON_MIN JS_BUTTON0
 #define JS_BUTTON_MAX JS_BUTTON31
 
 // One Shot aliases
+=======
+// One Shot toggle
+>>>>>>> mod-tap-combos
 #define OS_TOGG ONESHOT_TOGGLE
 #define OS_ON ONESHOT_ENABLE
 #define OS_OFF ONESHOT_DISABLE

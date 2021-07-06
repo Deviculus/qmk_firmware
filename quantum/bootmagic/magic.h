@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 /* Copyright 2021 QMK
+=======
+<<<<<<< HEAD:keyboards/plx/keymaps/via/config.h
+/* Copyright 2020 Peac Design and Basekeys.com
+=======
+/* Copyright 2021 QMK
+>>>>>>> mod-tap-combos:quantum/bootmagic/magic.h
+>>>>>>> mod-tap-combos
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,6 +21,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:keyboards/plx/keymaps/via/config.h
+ 
+=======
+>>>>>>> mod-tap-combos:quantum/bootmagic/magic.h
+>>>>>>> mod-tap-combos
 #pragma once
 
 void magic(void);

@@ -158,7 +158,11 @@ static void InvertCharacter(uint8_t *cursor) {
     }
 }
 
+<<<<<<< HEAD
 bool oled_init(oled_rotation_t rotation) {
+=======
+bool oled_init(uint8_t rotation) {
+>>>>>>> mod-tap-combos
 #if defined(USE_I2C) && defined(SPLIT_KEYBOARD)
     if (!is_keyboard_master()) {
         return true;
